@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 public class chatRoom {
     public static void main(String[] args) {
         // Create Nova the chat bot
-        Nova Nova = new Nova();
+        Nova Nova;
 
         // Scanner for all user input
         Scanner input = new Scanner(System.in);
@@ -15,6 +15,9 @@ public class chatRoom {
         String userAnswer;
         
         System.out.println("Hello, I'm Nova!");
+        
+        // TODO: Have user create a Nova
+        
         System.out.print("Enter 'S' for settings.");
         userAnswer = input.nextLine();
 
