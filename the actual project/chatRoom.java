@@ -1,12 +1,14 @@
 import java.util.Scanner;
 
 // Might use to save data to a file. Not exactly sure of usage, though. JSON, maybe?
-import java.io.PrintWriter;
+// import java.io.PrintWriter;
 
 public class chatRoom {
+
+    static Nova Nova;
     public static void main(String[] args) {
         // Create Nova the chat bot
-        Nova Nova = new Nova(1, 's');
+        // Nova Nova = new Nova(1, 's');
 
         // Scanner for all user input
         Scanner input = new Scanner(System.in);
@@ -14,21 +16,23 @@ public class chatRoom {
         // String to hold user responses
         String userAnswer;
         
-        Nova.intro();
+        // Nova.intro();
 
-        Nova.print("This a test");
-
-
+        // Nova.print("This a test");
         
         // TODO: Have user create a Nova
         
-        System.out.print("Enter 'S' for settings.");
-        userAnswer = input.nextLine();
+        // System.out.print("Enter 'S' for settings.");
+        // userAnswer = input.nextLine();
 
-        switch (userAnswer.charAt(0)) {
-            case 'S':
-                novaSettings();
-            default:
+        // switch (userAnswer.charAt(0)) {
+        //     case 'S':
+        //         novaSettings();
+        //     default:
+
+        // }
+
+        if (Nova == null) {
 
         }
 
@@ -39,6 +43,10 @@ public class chatRoom {
 
     // Method to define settings for Nova
     public static void novaSettings() {
+
+    }
+
+    public static void newNova() {
 
     }
 }
