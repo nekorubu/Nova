@@ -21,7 +21,7 @@ public class Nova {
 
     // TODO: Maybe do this documentation better?
     /**
-     * 
+     * Contructor for Nova with a specified name, personality type, and skip key
      * @param n Name for the bot, specified by the user (String)
      * @param p Personality
      * @param s Key (character) to be used to print all output until last message at once
@@ -33,8 +33,9 @@ public class Nova {
     }
 
     /**
-     * Default constructor for Nova
-     * @param p
+     * Constructor for Nova with the default name of "Nova," a personality type, and a skip key
+     * @param p Personality type
+     * @param s Key (character) to be used to print all output until last message at once
      */
     public Nova(int p, char s) {
         personality = p;
@@ -66,17 +67,24 @@ public class Nova {
         // TODO: Return a personality type for the bot depending the number
         switch (personality) {
             case 1:
+            return this.name + " has a \"Smart\" personality.";
 
-            return "";
+            case 2:
+            return this.name + " has a \"Timid\" personality.";
+
+            case 3:
+            return this.name + " has a \"Chaotic\" personality.";
+
+            // TODO: implement chaos meter for chaotic personalities?
 
             default:
-            return "";
+            return this.name + " does not have a valid personality type. Please go to the main menu, and visit the settings to change their personality type.";
         }
     }
 
     /**
      * Used to change the bot's personality
-     * @param p
+     * @param p The personality
      */
     public void setPersonality(int p) {
         personality = p;

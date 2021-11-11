@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Might use to save data to a file. Not exactly sure of usage, though. JSON, maybe?
@@ -7,14 +8,14 @@ public class chatRoom {
 
     static Nova Nova;
 
+    // String to hold user responses
+    static String userAnswer;
+
     // Scanner for all user input
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         // Create Nova the chat bot
         // Nova Nova = new Nova(1, 's');
-
-        // String to hold user responses
-        String userAnswer;
         
         // Nova.intro();
 
@@ -59,20 +60,48 @@ public class chatRoom {
 
         do {
             inputValid = false;
-            System.out.println("What would you like its personality to be like? Enter...");
+            System.out.println("What would you like its personality to be? Enter...");
             // TODO: Define some personality types
-            System.out.println("\"1\" for ");
+            System.out.println("\"1\" for \"Smart\"");
+            System.out.println("\"2\" for \"Timid\"");
+            System.out.println("\"3\" for \"Chaotic\"");
             try {
                 personality = input.nextInt();
+
+                if (personality < 0) {
+
+                } else if (personality == 0) {
+
+                } else if (personality > 2) {
+
+                } else {
+                    do {
+                        System.out.print("You entered " + personality + " for the personality type, which would give you a bot with a " + " personality. Is that okay? (y/N) ");
+                        // TODO: Find some way to get which personality type would come from what number (new class for references/help?)
+                        userAnswer = input.nextLine();
+                        if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
+                            convoFlow("I'll take that as a \"yes.\" Moving on...");
+                            inputValid = true;
+                        } else if (userAnswer.charAt(0)=='n' || userAnswer.charAt(0)=='N' || userAnswer=="") {
+                            convoFlow("I'll take that as a \"no.\"");
+                            break;
+                        } else {
+
+                        }
+                    } while (!inputValid);                    
+                }
+
                 // TODO: Confirm user choice
                 // TODO: Handle user not entering a valid whole number
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 //TODO: handle user not entering a whole number
+                convoFlow("That is either not a whole number, or if it was one, it was too big.");
                 input = new Scanner(System.in);
             }
         } while (!inputValid);
 
         do {
+            inputValid = false;
             System.out.println("What character would you like to use to skip through your bot's rambling? (This has to be a character, not just a key. Keys like [Shift] and [Ctrl] won't work)");
 
             try {
@@ -91,16 +120,36 @@ public class chatRoom {
         }
     }
 
+    // TODO: Incorporate color into output (pretty easy on Unix, harder on Windows)
     public static void convoFlow(String m) {
         // Scanner go = new Scanner(System.in);
         String flow;
         System.out.print(m);
         flow = input.nextLine();
+
+        //TODO(?): If the user doesn't press anything within a few seconds, remind them to press enter to continue
     }
 
     public static void ask(String q) {
         // Scanner flow = new Scanner(System.in);
         // String flow;
 
+    }
+
+    // TODO: finish methods to confirm user answer. One below is strict case.
+    public static String confirm(String question, boolean strict) {
+        if (strict) {
+            if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
+                convoFlow("I'll take that as a \"yes.\" Moving on...");
+                return "ok";
+            } else if (userAnswer.charAt(0)=='n' || userAnswer.charAt(0)=='N' || userAnswer=="") {
+                convoFlow("I'll take that as a \"no.\"");
+                return ""
+            } else {
+                
+            }
+        } else {
+
+        }
     }
 }
