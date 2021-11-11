@@ -101,7 +101,7 @@ public class Nova {
      * @param m Message to output
      * @param last (Optional) Whether or not this is the last message to output this time
      */
-    public void print(String m, boolean last) {
+    public void say(String m, boolean last) {
         System.out.print(m);
         if (!last) {
             System.out.print("... ");
@@ -120,7 +120,7 @@ public class Nova {
      * Print out text that is sent to it
      * @param m Message to output
      */
-    public void print(String m) {
+    public void say(String m) {
         System.out.print(m + "... ");
 
         if (!skip) {
