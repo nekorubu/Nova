@@ -72,22 +72,24 @@ public class chatRoom {
 
                 } else if (personality == 0) {
 
-                } else if (personality > 2) {
+                } else if (personality > 3) {
 
                 } else {
                     do {
-                        System.out.print("You entered " + personality + " for the personality type, which would give you a bot with a " + " personality. Is that okay? (y/N) ");
+                        // System.out.print("You entered " + personality + " for the personality type, which would give you a bot with a " + " personality. Is that okay? (y/N) ");
                         // TODO: Find some way to get which personality type would come from what number (new class for references/help?)
-                        userAnswer = input.nextLine();
-                        if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
-                            convoFlow("I'll take that as a \"yes.\" Moving on...");
-                            inputValid = true;
-                        } else if (userAnswer.charAt(0)=='n' || userAnswer.charAt(0)=='N' || userAnswer=="") {
-                            convoFlow("I'll take that as a \"no.\"");
-                            break;
-                        } else {
 
-                        }
+                        confirm("You entered " + personality + " for the personality type, which would give you a bot with a " + " personality. Is that okay?", true);
+                        // userAnswer = input.nextLine();
+                        // if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
+                        //     convoFlow("I'll take that as a \"yes.\" Moving on...");
+                        //     inputValid = true;
+                        // } else if (userAnswer.charAt(0)=='n' || userAnswer.charAt(0)=='N' || userAnswer=="") {
+                        //     convoFlow("I'll take that as a \"no.\"");
+                        //     break;
+                        // } else {
+
+                        // }
                     } while (!inputValid);                    
                 }
 
@@ -137,19 +139,58 @@ public class chatRoom {
     }
 
     // TODO: finish methods to confirm user answer. One below is strict case.
-    public static String confirm(String question, boolean strict) {
-        if (strict) {
+    public static char confirm(String question, boolean strict) {
+        boolean inputValid = false;
+        char userConfirm = '.';
+        do {
+            System.out.print(question);
+            if (strict) {
+                System.out.print(" (y/n) ");
+                userAnswer = input.nextLine();
+                if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
+                    convoFlow("I'll take that as a \"yes.\" Moving on...");
+                    userConfirm = 'y';
+                    inputValid = true;
+                } else if (userAnswer.charAt(0)=='n' || userAnswer.charAt(0)=='N') {
+                    convoFlow("I'll take that as a \"no.\"");
+                    userConfirm = 'n';
+                    inputValid = true;
+                } else {
+                    convoFlow("I need a \"yes\" or a \"no.\"");
+                }
+            } else {
+                System.out.print(" (y/N) ");
+                userAnswer = input.nextLine();
+                if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
+                    convoFlow("I'll take that as a \"yes.\" Moving on...");
+                    userConfirm = 'y';
+                    inputValid = true;
+                } else {
+                    convoFlow("I'll take that as a \"no.\"");
+                    userConfirm = 'n';
+                    inputValid = true;
+                }
+            }
+        } while (!inputValid);
+        return userConfirm;
+    }
+
+    public static char confirm(String question) {
+        boolean inputValid = false;
+        char userConfirm = '.';
+        do {
+            System.out.print(" (y/N) ");
+            userAnswer = input.nextLine();
             if (userAnswer.charAt(0)=='y' || userAnswer.charAt(0)=='Y') {
                 convoFlow("I'll take that as a \"yes.\" Moving on...");
-                return "ok";
-            } else if (userAnswer.charAt(0)=='n' || userAnswer.charAt(0)=='N' || userAnswer=="") {
-                convoFlow("I'll take that as a \"no.\"");
-                return ""
+                userConfirm = 'y';
+                inputValid = true;
             } else {
-                
+                convoFlow("I'll take that as a \"no.\"");
+                userConfirm = 'n';
+                inputValid = true;
             }
-        } else {
-
-        }
+        } while (!inputValid);
+        return userConfirm;
     }
 }
