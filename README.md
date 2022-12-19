@@ -9,6 +9,6 @@ I'm don't know how to package this to make it run as a standalone program, if yo
 
 Feel free to fork this, add whatever you'd like, or simply make suggestions.
 
-Update: Apparently, I couldn't English either:
+**Update:** Apparently, I couldn't English either:
 
 > I'm don't know how to package this to make it run as a standalone program, if you want to try it, pull it and run it in something Visual Studio or something. ¯\\\_(ツ)_/¯
